@@ -1,6 +1,19 @@
 #by mubashshir
 import tkinter as t
 import random
+import pickle
+try:
+  with open("money.bin",'rb') as f:
+      money=pickle.load(f)
+except FileNotFoundError:
+       pass
+def monadd(x):
+  global money  
+  money+=x
+  with open("money.bin",'wb') as f:
+    money=pickle.dump(money,f)
+  with open("money.bin",'rb') as f:
+      money=pickle.load(f)
 try:
   f=open("score.txt","r")
   f.seek(0)
@@ -29,6 +42,8 @@ lab=t.Label(root,text="hi: "+str(hiscore))
 lab.grid(row=0,column=4)
 lab2=t.Label(root,text="score : "+str(score))
 lab2.grid(row=0,column=3)
+lab3=t.Label(root,text="money : "+str(money))
+lab3.grid(row=0,column=1)
 up=10
 down=100
 pow2=100
@@ -69,6 +84,8 @@ def clicked(a,b):
                   
                   if (dict[click2]==dict[click1] and click2!=click1):
                            if click1 in gen(click2[1],click2[2]):
+                                    monadd(int(dict[click2]/2))
+                                    lab3.config(text="money : "+str(money))
                                     temp=random.choice(temp_list)
                                     a=dict[click2]=dict[click1]*2
                                     dict[click1]=temp
