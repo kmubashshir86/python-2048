@@ -18,9 +18,8 @@ state_show.grid(row=0,column=5)
 def random_hex_color():
   return f"#{random.randrange(0x1000000):06x}"
 
-# Example usage
 color = random_hex_color()
-print(f"Random Hex Color: {color}")
+
 
 
 state=0
