@@ -9,8 +9,10 @@ def start():
     import _2048
 def reset():
     import mon
-start_button = t.Button(main, text='start', command=start, width=120, height=70, image=bg_image, compound="center")
+
+
+start_button = t.Button(main, text='start', command=start, width=120, height=50, image=bg_image, compound="center")
 start_button.pack()
-reset_button = t.Button(main, text='reset', command=reset, width=120, height=30, compound="center")
+reset_button = t.Button(main, text='reset', command=reset, width=120, height=20, compound="center")
 reset_button.pack()
 main.mainloop()
